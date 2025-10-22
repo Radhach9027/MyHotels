@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		A294133E2EA9343300652639 /* DependencyContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A294133D2EA9343300652639 /* DependencyContainer */; };
 		A29413412EA9368700652639 /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = A29413402EA9368700652639 /* NetworkClient */; };
+		A29413872EA9423F00652639 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A29413862EA9423F00652639 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A29413862EA9423F00652639 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A29F78DC2EA776E4004BFD8F /* MyHotels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHotels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,6 +41,7 @@
 		A29F78D32EA776E4004BFD8F = {
 			isa = PBXGroup;
 			children = (
+				A29413862EA9423F00652639 /* README.md */,
 				A29F78DE2EA776E4004BFD8F /* MyHotels */,
 				A29F78DD2EA776E4004BFD8F /* Products */,
 			);
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29413872EA9423F00652639 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
