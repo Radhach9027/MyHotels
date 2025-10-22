@@ -1,0 +1,24 @@
+{
+  "originHash" : "8d078a7b477f09c035c05585107b02c6c34c7227437eb3a42ea9a674bfce7f12",
+  "pins" : [
+    {
+      "identity" : "dependencycontainer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Radhach9027/DependencyContainer",
+      "state" : {
+        "revision" : "3700abaa492a81c515dafc77c0841b0239e5645a",
+        "version" : "1.0.10"
+      }
+    },
+    {
+      "identity" : "networkclient",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Radhach9027/NetworkClient",
+      "state" : {
+        "branch" : "main",
+        "revision" : "cb0358c856b39b6417b7a355f228d2241176f42f"
+      }
+    }
+  ],
+  "version" : 3
+}
