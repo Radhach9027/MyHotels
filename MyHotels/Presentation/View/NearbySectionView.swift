@@ -9,9 +9,8 @@ import SwiftUI
 import CoreLocation
 
 struct NearbySectionView: View {
-    @StateObject private var vm = NearbyPlacesViewModel()
-    private let currentLocation = CLLocation(latitude: 17.4474, longitude: 78.3762)
-    
+    @StateObject var vm = NearbyPlacesViewModel()
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Near You")
@@ -36,8 +35,8 @@ struct NearbySectionView: View {
                 case .loaded(let places):
                     ScrollView {
                         LazyVStack(spacing: 12) {
-                            ForEach(placesSorted(places)) { place in
-                                PlaceRow(place: place, currentLocation: currentLocation)
+                            ForEach(vm.placesSorted(places)) { place in
+                                PlaceRow(place: place, distance: vm.distanceString(from: vm.currentLocation, to: place.clLocation))
                             }
                         }
                         .padding(.horizontal)
@@ -47,17 +46,7 @@ struct NearbySectionView: View {
                 }
             }
         }
-        .onAppear { if case .idle = vm.state { vm.load(from: currentLocation) } }
-        .refreshable { vm.load(from: currentLocation) }
-    }
-    
-    private func placesSorted(_ items: [Place]) -> [Place] {
-        items.sorted {
-            CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
-                .distance(from: currentLocation)
-            <
-            CLLocation(latitude: $1.coordinate.latitude, longitude: $1.coordinate.longitude)
-                .distance(from: currentLocation)
-        }
+        .onAppear { if case .idle = vm.state { vm.load(from: vm.currentLocation) } }
+        .refreshable { vm.load(from: vm.currentLocation) }
     }
 }

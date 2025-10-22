@@ -10,7 +10,7 @@ import MapKit
 
 struct PlaceRow: View {
     let place: Place
-    let currentLocation: CLLocation
+    let distance: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -38,10 +38,10 @@ struct PlaceRow: View {
                 HStack(spacing: 4) {
                     Image(systemName: "location.circle")
                         .imageScale(.medium)
-                    Text(distanceString(from: currentLocation, to: place.clLocation))
+                    Text(distance)
                         .font(.subheadline.weight(.semibold))
                 }
-                .accessibilityLabel("Distance \(distanceString(from: currentLocation, to: place.clLocation))")
+                .accessibilityLabel("Distance \(distance)")
             }
             
             // Preview image
@@ -101,16 +101,6 @@ struct PlaceRow: View {
         )
         .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
         .accessibilityElement(children: .combine)
-    }
-    
-    private func distanceString(from a: CLLocation, to b: CLLocation) -> String {
-        let meters = a.distance(from: b)
-        if meters < 1000 {
-            return "\(Int(meters)) m"
-        } else {
-            let km = meters / 1000.0
-            return String(format: "%.1f km", km)
-        }
     }
     
     private func openInMaps(destination: Place) {
