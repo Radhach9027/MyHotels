@@ -13,32 +13,41 @@ struct RemoteHotelRepository: HotelRepository {
    @Inject private var client: TraditionalNetworkProtocol
     
     func topHotels() async throws -> [Hotel] {
-        return [
-            Hotel(id: "royal-bay",
-                  name: "The Royal Bay",
-                  city: "Goa, India",
-                  imageURL: URL(string: "https://images.unsplash.com/photo-1501117716987-c8e69f433f83?q=80&w=1600&auto=format&fit=crop"),
-                  description: "Beachfront resort with infinity pool, private cabanas, and a lively sunset bar.",
-                  rating: 4.7, reviewsCount: 1284, pricePerNight: 8999),
-            Hotel(id: "skyline-suites",
-                  name: "Skyline Suites",
-                  city: "Mumbai, India",
-                  imageURL: URL(string: "https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop"),
-                  description: "Chic city stay with panoramic skyline views, rooftop lounge, and 24/7 concierge.",
-                  rating: 4.5, reviewsCount: 2032, pricePerNight: 7599),
-            Hotel(id: "monsoon-retreat",
-                  name: "Monsoon Retreat",
-                  city: "Munnar, India",
-                  imageURL: URL(string: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2a59?q=80&w=1600&auto=format&fit=crop"),
-                  description: "Mist-kissed hillside cottages, tea-garden treks, and serene spa therapies.",
-                  rating: 4.8, reviewsCount: 987, pricePerNight: 6799),
-            Hotel(id: "fort-heritage",
-                  name: "Fort Heritage",
-                  city: "Jaipur, India",
-                  imageURL: URL(string: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop"),
-                  description: "Royal interiors, courtyard dinners with folk music, and curated heritage walks.",
-                  rating: 4.6, reviewsCount: 1540, pricePerNight: 8299)
+        [
+            Hotel(
+                id: "taj-falaknuma-palace",
+                name: "Taj Falaknuma Palace",
+                city: "Hyderabad, India",
+                imageURL: URL(string: "https://commons.wikimedia.org/wiki/Special:FilePath/Taj%20Falaknuma%20Palace.jpg"),
+                description: "Iconic hilltop palace hotel with grand durbar halls, heritage dining, and panoramic city views.",
+                rating: 4.8, reviewsCount: 2500, pricePerNight: 24500
+            ),
+            Hotel(
+                id: "itc-kohenur",
+                name: "ITC Kohenur, a Luxury Collection Hotel",
+                city: "Hyderabad, India",
+                imageURL: URL(string: "https://commons.wikimedia.org/wiki/Special:FilePath/ITC%20Kohenur%20Hyderabad%20India.jpg"),
+                description: "Contemporary luxury overlooking Durgam Cheruvu, with fine dining and spa in HITEC City.",
+                rating: 4.7, reviewsCount: 3100, pricePerNight: 12000
+            ),
+            Hotel(
+                id: "park-hyatt-hyderabad",
+                name: "Park Hyatt Hyderabad",
+                city: "Hyderabad, India",
+                imageURL: URL(string: "https://commons.wikimedia.org/wiki/Special:FilePath/Park%20Hyatt%20Hyderabad.jpg"),
+                description: "Elegant Banjara Hills address known for its atrium lobby, refined rooms, and upscale restaurants.",
+                rating: 4.6, reviewsCount: 4200, pricePerNight: 13500
+            ),
+            Hotel(
+                id: "novotel-hyderabad-airport",
+                name: "Novotel Hyderabad Airport",
+                city: "Hyderabad, India",
+                imageURL: URL(string: "https://commons.wikimedia.org/wiki/Special:FilePath/Novotel%20Hyderabad%20Airport%20Exterior.jpg"),
+                description: "Convenient airport hotel with resort-style pool, fitness facilities, and all-day dining.",
+                rating: 4.3, reviewsCount: 5600, pricePerNight: 8000
+            )
         ]
+
     }
 }
 
