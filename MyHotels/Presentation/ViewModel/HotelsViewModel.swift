@@ -13,8 +13,9 @@ import DependencyContainer
 final class HotelsViewModel: ObservableObject {
     @Published private(set) var state: LoadState<[Hotel]> = .idle
     @Inject private var getTopHotels: GetTopHotelsUseCase
-    
-    func load() {
+    @Published var balance: Decimal = 12345.67
+
+        func load() {
         state = .loading
         Task {
             do {

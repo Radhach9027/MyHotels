@@ -21,3 +21,28 @@ extension View {
             )
     }
 }
+
+extension View {
+    func appTopBar(_ config: TopBarConfig) -> some View {
+        modifier(AppTopBarModifier(config: config))
+    }
+
+    func appTopBar(
+        title: String,
+        balance: Decimal,
+        locationName: String = "Hyderabad",
+        locationSymbol: String = "mappin.and.ellipse",
+        onLocationTap: @escaping () -> Void = {},
+        onWallet: @escaping () -> Void
+    ) -> some View {
+        appTopBar(TopBarConfig(
+            title: title,
+            balance: balance,
+            locationName: locationName,
+            onLocationTap: onLocationTap,
+            onWallet: onWallet,
+            locationSymbol: locationSymbol
+        ))
+    }
+}
+

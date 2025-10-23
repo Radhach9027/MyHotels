@@ -22,13 +22,12 @@ struct HomeView: View {
                 case .idle, .loading:
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(0..<3, id: \.self) { _ in
-                                ShimmerHotelCard()
-                            }
+                            ForEach(0..<3, id: \.self) { _ in ShimmerHotelCard() }
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 2)
                     }
+                    
                 case .failed:
                     HStack {
                         Image(systemName: "exclamationmark.triangle.fill")
@@ -37,6 +36,7 @@ struct HomeView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .padding(.horizontal)
+                    
                 case .loaded(let hotels):
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
@@ -52,14 +52,11 @@ struct HomeView: View {
                     .scrollTargetBehavior(.paging)
                 }
             }
+            
             NearbySectionView()
         }
         .padding(.top, 8)
         .onAppear { if case .idle = hotelsVM.state { hotelsVM.load() } }
         .refreshable { hotelsVM.load() }
     }
-}
-
-#Preview {
-    HomeView()
 }
