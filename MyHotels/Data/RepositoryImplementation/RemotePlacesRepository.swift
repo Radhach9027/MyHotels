@@ -14,7 +14,6 @@ struct RemotePlacesRepository: PlacesRepository {
     @Inject private var client: TraditionalNetworkProtocol
     
     func nearbyPlaces(from: CLLocation, radiusMeters: Int) async throws -> [Place] {
-        try await Task.sleep(nanoseconds: 3_000_000_000)
         return [
             Place(id: "charminar", name: "Charminar Bazaar", category: "Landmark",
                   coordinate: .init(latitude: 17.3616, longitude: 78.4747),

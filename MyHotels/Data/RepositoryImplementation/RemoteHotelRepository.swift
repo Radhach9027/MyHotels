@@ -13,7 +13,6 @@ struct RemoteHotelRepository: HotelRepository {
    @Inject private var client: TraditionalNetworkProtocol
     
     func topHotels() async throws -> [Hotel] {
-        try await Task.sleep(nanoseconds: 2_000_000_000)
         return [
             Hotel(id: "royal-bay",
                   name: "The Royal Bay",
