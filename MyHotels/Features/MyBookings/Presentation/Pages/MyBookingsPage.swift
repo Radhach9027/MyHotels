@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyBookingsView: View {
+struct MyBookingsPage: View {
     var body: some View {
         List {
             ForEach(0..<10, id: \.self) { i in

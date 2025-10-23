@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum MainTab: String, CaseIterable, Hashable {
-    case hotels, booking, pass, profile
+    case hotels, booking, pass, Favourites, profile
 }
 
 extension MainTab {
@@ -19,6 +19,7 @@ extension MainTab {
         case .hotels:  return "Hotels"
         case .booking: return "Bookings"
         case .pass:    return "My Pass"
+        case .Favourites : return "Favourites"
         case .profile: return "Profile"
         }
     }
@@ -29,16 +30,18 @@ extension MainTab {
         case .booking: return "calendar.badge.clock"
         case .pass:    return "ticket.fill"
         case .profile: return "person.fill"
+        case .Favourites: return "heart.fill"
         }
     }
 
     @ViewBuilder
     func contentView() -> some View {
         switch self {
-        case .hotels:  HomeView()
-        case .booking: MyBookingsView()
-        case .pass:    MyPassView()
-        case .profile: ProfileView()
+        case .hotels:  HomePage()
+        case .booking: MyBookingsPage()
+        case .pass:    MyPassPage()
+        case .profile: ProfilePage()
+        case .Favourites: FavouritesPage()
         }
     }
 }

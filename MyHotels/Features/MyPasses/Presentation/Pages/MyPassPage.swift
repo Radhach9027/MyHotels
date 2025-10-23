@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyPassView: View {
+struct MyPassPage: View {
     var body: some View {
         VStack(spacing: 16) {
             Image(systemName: "qrcode.viewfinder")

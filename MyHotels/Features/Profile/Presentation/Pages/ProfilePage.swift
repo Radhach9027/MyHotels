@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileView: View {
+struct ProfilePage: View {
     
     var body: some View {
         Text("Profile View")

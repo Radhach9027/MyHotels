@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct HomeView: View {
+struct HomePage: View {
     @StateObject private var hotelsVM = HotelsViewModel()
     
     var body: some View {
