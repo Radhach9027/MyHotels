@@ -7,56 +7,103 @@
 
 import SwiftUI
 
-
 struct HomePage: View {
     @StateObject private var hotelsVM = HotelsViewModel()
-    
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Top Hotels")
-                .font(.title2).bold()
-                .padding(.horizontal)
-            
-            Group {
-                switch hotelsVM.state {
-                case .idle, .loading:
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(0..<3, id: \.self) { _ in ShimmerHotelCard() }
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 16) {
+
+                    StayTypeSelectionView { params in
+                        switch params.type {
+                        case .hourly:
+                            print("Hourly: \(params.hours!)h starting at…")
+                        case .night:
+                            print("Night: \(params.checkIn!) → \(params.checkOut!)")
                         }
-                        .padding(.horizontal)
-                        .padding(.bottom, 2)
                     }
-                    
-                case .failed:
-                    HStack {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                        Text("Failed to load hotels. Pull to retry.")
-                    }
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
                     .padding(.horizontal)
-                    
-                case .loaded(let hotels):
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(hotels) { hotel in
-                                HotelCard(hotel: hotel) {
-                                    print("Book Now tapped for \(hotel.name)")
-                                }
-                            }
+                    .padding(.top, 8)
+
+                    HStack {
+                        Text("Top Hotels Near You")
+                            .font(.title3).bold()
+                        Spacer()
+                        Button {
+                            hotelsVM.load()
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.body)
                         }
-                        .padding(.horizontal)
-                        .padding(.bottom, 2)
+                        .buttonStyle(.plain)
                     }
-                    .scrollTargetBehavior(.paging)
+                    .padding(.horizontal)
+
+                    HotelCarousel(viewModel: hotelsVM)
+                        .padding(.bottom, 16)
+                }
+                .padding(.bottom, 32) // space above bottom bar
+            }
+            .background(Color(.systemGroupedBackground))
+            .onAppear {
+                if case .idle = hotelsVM.state {
+                    hotelsVM.load()
                 }
             }
-            
-            NearbySectionView()
+            .navigationTitle("Hotels")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .padding(.top, 8)
-        .onAppear { if case .idle = hotelsVM.state { hotelsVM.load() } }
-        .refreshable { hotelsVM.load() }
     }
 }
+
+private struct HotelCarousel: View {
+    @ObservedObject var viewModel: HotelsViewModel
+
+    var body: some View {
+        switch viewModel.state {
+        case .idle, .loading:
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(0..<3, id: \.self) { _ in
+                        ShimmerHotelCard()
+                            .frame(width: 270, height: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                    }
+                }
+                .padding(.horizontal, 16)
+            }
+
+        case .failed:
+            VStack {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.largeTitle)
+                    .foregroundColor(.secondary)
+                Text("Failed to load hotels")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                Button("Retry") {
+                    viewModel.load()
+                }
+                .buttonStyle(.bordered)
+                .padding(.top, 6)
+            }
+            .frame(maxWidth: .infinity)
+
+        case .loaded(let hotels):
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(hotels) { hotel in
+                        HotelCard(hotel: hotel) {
+                            print("Book Now tapped for \(hotel.name)")
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                    }
+                }
+                .padding(.horizontal, 16)
+            }
+            .scrollTargetBehavior(.paging)
+        }
+    }
+}
+
