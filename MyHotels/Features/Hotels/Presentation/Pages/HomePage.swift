@@ -27,7 +27,7 @@ struct HomePage: View {
                     .padding(.top, 8)
 
                     HStack {
-                        Text("Top Hotels Near You")
+                        Text("Popular Hotels Nearby")
                             .font(.title3).bold()
                         Spacer()
                         Button {
@@ -41,7 +41,7 @@ struct HomePage: View {
                     .padding(.horizontal)
 
                     HotelCarousel(viewModel: hotelsVM)
-                        .padding(.bottom, 16)
+                    NearbySectionView()
                 }
                 .padding(.bottom, 32) // space above bottom bar
             }

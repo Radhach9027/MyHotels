@@ -46,16 +46,14 @@ extension MainTab {
     }
 }
 
-struct MainTabShell: View {
-    @State private var selection: MainTab = .hotels
-    @State private var balance: Decimal = 12345.67
-    @State private var locationName: String = "Hyderabad"
-
+struct RootPage: View {
+    @StateObject var viewModel = RootPageViewModel()
+    
     var body: some View {
         AppTabBar(
-            selection: $selection,
-            balance: balance,
-            locationName: locationName,
+            selection: $viewModel.selection,
+            balance: viewModel.balance,
+            locationName: viewModel.locationName,
             onLocationTap: { },
             onWallet: {}
         )

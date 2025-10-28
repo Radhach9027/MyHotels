@@ -13,7 +13,7 @@ struct NearbySectionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Near You")
+            Text("Nearby Attractions")
                 .font(.title2).bold()
                 .padding(.horizontal)
             

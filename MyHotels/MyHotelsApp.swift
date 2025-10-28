@@ -16,7 +16,7 @@ struct MyHotelsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainTabShell()
+            RootPage()
         }
     }
 }
