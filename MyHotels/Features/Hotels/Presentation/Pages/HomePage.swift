@@ -43,7 +43,7 @@ struct HomePage: View {
                     HotelCarousel(viewModel: hotelsVM)
                     NearbySectionView()
                 }
-                .padding(.bottom, 32) // space above bottom bar
+                .padding(.bottom, 8)
             }
             .background(Color(.systemGroupedBackground))
             .onAppear {

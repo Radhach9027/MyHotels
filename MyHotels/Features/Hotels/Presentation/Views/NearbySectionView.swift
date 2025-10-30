@@ -14,7 +14,7 @@ struct NearbySectionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Nearby Attractions")
-                .font(.title2).bold()
+                .font(.title3).bold()
                 .padding(.horizontal)
             
             Group {

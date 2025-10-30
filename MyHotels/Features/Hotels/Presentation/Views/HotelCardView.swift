@@ -33,7 +33,7 @@ struct HotelCard: View {
                         Color.secondary
                     }
                 }
-                .frame(height: 140)
+                .frame(height: 130)
                 .clipped()
                 .overlay(LinearGradient(
                     gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.45)]),
@@ -80,7 +80,6 @@ struct HotelCard: View {
                 Text(hotel.description)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                    .lineLimit(2)
                     .multilineTextAlignment(.leading)
                 
                 HStack {
@@ -95,7 +94,6 @@ struct HotelCard: View {
                     .buttonStyle(.borderedProminent)
                     
                     Button {
-                        // Optional: Save, wishlist, or share
                     } label: {
                         Image(systemName: "heart")
                             .font(.body.weight(.semibold))
@@ -117,8 +115,7 @@ struct HotelCard: View {
             RoundedRectangle(cornerRadius: 18, style: .continuous)
                 .strokeBorder(Color.primary.opacity(0.06))
         )
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 6)
+        .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
         .accessibilityElement(children: .combine)
     }
 }

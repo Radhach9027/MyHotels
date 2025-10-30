@@ -77,7 +77,7 @@ struct AppTopBarModifier: ViewModifier {
         content
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { AppTopBarToolbar(config: config) }
-            .toolbarBackground(Color(.systemBackground), for: .navigationBar)
+            .toolbarBackground(Color(.clear), for: .navigationBar)
             .toolbarBackgroundVisibility(.visible, for: .navigationBar)
     }
 }
